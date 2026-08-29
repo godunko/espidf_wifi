@@ -12,6 +12,11 @@ package ESPIDF.WiFi is
 
    function WIFI_INIT_CONFIG_DEFAULT return wifi_init_config_t;
 
+   function esp_wifi_init (config : wifi_init_config_t) return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_init";
+
+   procedure esp_wifi_init (config : wifi_init_config_t);
+
 private
 
    sizeof_wifi_init_config_t : constant int
