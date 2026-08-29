@@ -1,0 +1,22 @@
+name = "espidf_wifi"
+version = "0.1.0-dev"
+website = "https://github.com/godunko/espidf"
+description = "Ada/ESP-IDF: bindings WiFi"
+long-description = """
+Ada bindings for the ESP-IDF Wi-Fi driver, providing high-level interface management and station/AP mode configuration for Espressif microcontrollers.
+"""
+
+authors = ["Vadim Godunko"]
+maintainers = ["Vadim Godunko <vgodunko@gmail.com>"]
+maintainers-logins = ["godunko"]
+licenses = "Apache-2.0 WITH LLVM-exception"
+tags = ["a0b", "embedded", "esp", "esp32", "espidf"]
+
+[configuration]
+generate_ada = false
+generate_c = false
+generate_gpr = true
+
+[[depends-on]]
+a0b_base = "*"
+espidf_netif = "*"
