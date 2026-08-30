@@ -10,6 +10,8 @@ pragma Extensions_Allowed (On);
 
 private with System.Storage_Elements;
 
+with ESPIDF.C_Strings;
+
 package ESPIDF.WiFi is
 
    type wifi_mode_t is
@@ -28,6 +30,11 @@ package ESPIDF.WiFi is
    --  Objects initialized using WIFI_INIT_CONFIG_DEFAULT macro automatically.
 
    type wifi_config_t is limited private;
+
+   procedure Set_sta_ssid
+     (Self : in out wifi_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+      with Pre => To'Length in 0 .. 33;
 
    function esp_wifi_init (config : wifi_init_config_t) return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_init";
