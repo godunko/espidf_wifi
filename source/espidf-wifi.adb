@@ -85,6 +85,25 @@ package body ESPIDF.WiFi is
       Imported (cfg, Interfaces.C.C_bool (To));
    end Set_nvs_enable;
 
+   ----------------------
+   -- Set_sta_password --
+   ----------------------
+
+   procedure Set_sta_password
+     (Self : in out wifi_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+   is
+      procedure Imported
+        (cfg  : in out wifi_config_t;
+         pwd  : not null ESPIDF.C_Strings.const_char_ptr;
+         len  : Integer)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_sta_password";
+
+   begin
+      Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
+   end Set_sta_password;
+
    ------------------
    -- Set_sta_ssid --
    ------------------

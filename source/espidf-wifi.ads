@@ -40,6 +40,11 @@ package ESPIDF.WiFi is
       To   : ESPIDF.C_Strings.char_array_string)
       with Pre => To'Length in 0 .. 33;
 
+   procedure Set_sta_password
+     (Self : in out wifi_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+      with Pre => To'Length in 0 .. 65;
+
    WIFI_EVENT : constant ESPIDF.Event.esp_event_base_t
      with Import, Convention => C, External_Name => "WIFI_EVENT";
 
