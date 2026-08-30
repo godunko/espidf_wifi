@@ -29,6 +29,9 @@ package ESPIDF.WiFi is
    type wifi_init_config_t is limited private;
    --  Objects initialized using WIFI_INIT_CONFIG_DEFAULT macro automatically.
 
+   procedure Set_nvs_enable
+     (cfg : in out wifi_init_config_t; To : Boolean);
+
    type wifi_config_t is limited private;
 
    procedure Set_sta_ssid

@@ -60,6 +60,22 @@ package body ESPIDF.WiFi is
       Imported (Self);
    end Initialize;
 
+   ---------------------
+   -- Set_nvs_disable --
+   ---------------------
+
+   procedure Set_nvs_enable
+     (cfg : in out wifi_init_config_t; To : Boolean)
+   is
+      procedure Imported
+        (cfg : in out wifi_init_config_t; To : Interfaces.C.C_bool)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_init_config_t_nvs_enable";
+
+   begin
+      Imported (cfg, Interfaces.C.C_bool (To));
+   end Set_nvs_enable;
+
    ------------------
    -- Set_sta_ssid --
    ------------------
