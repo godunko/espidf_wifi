@@ -17,20 +17,18 @@ package body ESPIDF.WiFi is
       ESPIDF.Ada_ESP_Check_Error (esp_wifi_init (config));
    end esp_wifi_init;
 
-   ------------------------------
-   -- WIFI_INIT_CONFIG_DEFAULT --
-   ------------------------------
+   ----------------
+   -- Initialize --
+   ----------------
 
-   function WIFI_INIT_CONFIG_DEFAULT return wifi_init_config_t is
+   procedure Initialize (Self : in out wifi_init_config_t) is
 
-      procedure Internal (Config : out wifi_init_config_t)
+      procedure Imported (config : out wifi_init_config_t)
         with Import, Convention => C,
              External_Name => "__ada_WIFI_INIT_CONFIG_DEFAULT";
 
    begin
-      return Result : wifi_init_config_t do
-         Internal (Result);
-      end return;
-   end WIFI_INIT_CONFIG_DEFAULT;
+      Imported (Self);
+   end Initialize;
 
 end ESPIDF.WiFi;

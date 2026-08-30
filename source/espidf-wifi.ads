@@ -5,14 +5,15 @@
 --
 
 pragma Ada_2022;
+pragma Extensions_Allowed (On);
+--  Aspect `Finalizable` is used to initialize objects automaically
 
 private with System.Storage_Elements;
 
 package ESPIDF.WiFi is
 
    type wifi_init_config_t is limited private;
-
-   function WIFI_INIT_CONFIG_DEFAULT return wifi_init_config_t;
+   --  Objects initialized using WIFI_INIT_CONFIG_DEFAULT macro automatically.
 
    type wifi_config_t is limited private;
 
@@ -27,10 +28,20 @@ private
       with Import, Convention => C,
            Link_Name => "__ada_sizeof_wifi_init_config_t";
 
-   type wifi_init_config_t is
+   type wifi_init_config_t_Storage is
      new System.Storage_Elements.Storage_Array
        (1 .. System.Storage_Elements.Storage_Count
                (sizeof_wifi_init_config_t)) with Convention => C;
+
+   procedure Initialize (Self : in out wifi_init_config_t);
+
+   type wifi_init_config_t is record
+      Storage : wifi_init_config_t_Storage := (others => 0);
+   end record
+     with Convention => C,
+          Finalizable =>
+            (Initialize           => Initialize,
+             Relaxed_Finalization => True);
 
    sizeof_wifi_config_t : constant int
       with Import, Convention => C,
