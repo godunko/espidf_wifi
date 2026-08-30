@@ -37,6 +37,15 @@ package body ESPIDF.WiFi is
       ESPIDF.Ada_ESP_Check_Error (esp_wifi_set_mode (mode));
    end esp_wifi_set_mode;
 
+   --------------------
+   -- esp_wifi_start --
+   --------------------
+
+   procedure esp_wifi_start is
+   begin
+      ESPIDF.Ada_ESP_Check_Error (esp_wifi_start);
+   end esp_wifi_start;
+
    ----------------
    -- Initialize --
    ----------------

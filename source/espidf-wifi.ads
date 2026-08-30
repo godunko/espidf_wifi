@@ -48,6 +48,11 @@ package ESPIDF.WiFi is
      (iface : wifi_interface_t;
       conf  : in out wifi_config_t);
 
+   function esp_wifi_start return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_start";
+
+   procedure esp_wifi_start;
+
 private
 
    sizeof_wifi_init_config_t : constant int
