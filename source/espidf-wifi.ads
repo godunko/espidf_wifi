@@ -12,6 +12,13 @@ private with System.Storage_Elements;
 
 package ESPIDF.WiFi is
 
+   type wifi_mode_t is
+     (WIFI_MODE_NULL,
+      WIFI_MODE_STA,
+      WIFI_MODE_AP,
+      WIFI_MODE_APSTA,
+      WIFI_MODE_NAN) with Convention => C;
+
    type wifi_init_config_t is limited private;
    --  Objects initialized using WIFI_INIT_CONFIG_DEFAULT macro automatically.
 
@@ -21,6 +28,11 @@ package ESPIDF.WiFi is
      with Import, Convention => C, External_Name => "esp_wifi_init";
 
    procedure esp_wifi_init (config : wifi_init_config_t);
+
+   function esp_wifi_set_mode (mode : wifi_mode_t) return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_set_mode";
+
+   procedure esp_wifi_set_mode (mode : wifi_mode_t);
 
 private
 
