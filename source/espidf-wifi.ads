@@ -19,6 +19,11 @@ package ESPIDF.WiFi is
       WIFI_MODE_APSTA,
       WIFI_MODE_NAN) with Convention => C;
 
+   type wifi_interface_t is
+     (WIFI_IF_STA,
+      WIFI_IF_AP,
+      WIFI_IF_NAN) with Convention => C;
+
    type wifi_init_config_t is limited private;
    --  Objects initialized using WIFI_INIT_CONFIG_DEFAULT macro automatically.
 
@@ -33,6 +38,15 @@ package ESPIDF.WiFi is
      with Import, Convention => C, External_Name => "esp_wifi_set_mode";
 
    procedure esp_wifi_set_mode (mode : wifi_mode_t);
+
+   function esp_wifi_set_config
+     (iface : wifi_interface_t;
+      conf  : in out wifi_config_t) return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_set_config";
+
+   procedure esp_wifi_set_config
+     (iface : wifi_interface_t;
+      conf  : in out wifi_config_t);
 
 private
 
