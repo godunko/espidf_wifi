@@ -8,13 +8,22 @@ with ESPIDF.Ada_ESP_Check_Error;
 
 package body ESPIDF.WiFi is
 
+   ----------------------
+   -- esp_wifi_connect --
+   ----------------------
+
+   procedure esp_wifi_connect is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_connect);
+   end esp_wifi_connect;
+
    -------------------
    -- esp_wifi_init --
    -------------------
 
    procedure esp_wifi_init (config : wifi_init_config_t) is
    begin
-      ESPIDF.Ada_ESP_Check_Error (esp_wifi_init (config));
+      Ada_ESP_Check_Error (esp_wifi_init (config));
    end esp_wifi_init;
 
    -------------------------
@@ -25,7 +34,7 @@ package body ESPIDF.WiFi is
      (iface : wifi_interface_t;
       conf  : in out wifi_config_t) is
    begin
-      ESPIDF.Ada_ESP_Check_Error (esp_wifi_set_config (iface, conf));
+      Ada_ESP_Check_Error (esp_wifi_set_config (iface, conf));
    end esp_wifi_set_config;
 
    -----------------------
@@ -34,7 +43,7 @@ package body ESPIDF.WiFi is
 
    procedure esp_wifi_set_mode (mode : wifi_mode_t) is
    begin
-      ESPIDF.Ada_ESP_Check_Error (esp_wifi_set_mode (mode));
+      Ada_ESP_Check_Error (esp_wifi_set_mode (mode));
    end esp_wifi_set_mode;
 
    --------------------
@@ -43,7 +52,7 @@ package body ESPIDF.WiFi is
 
    procedure esp_wifi_start is
    begin
-      ESPIDF.Ada_ESP_Check_Error (esp_wifi_start);
+      Ada_ESP_Check_Error (esp_wifi_start);
    end esp_wifi_start;
 
    ----------------

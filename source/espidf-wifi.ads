@@ -119,6 +119,11 @@ package ESPIDF.WiFi is
 
    procedure esp_wifi_start;
 
+   function esp_wifi_connect return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_connect";
+
+   procedure esp_wifi_connect;
+
 private
 
    sizeof_wifi_init_config_t : constant int
