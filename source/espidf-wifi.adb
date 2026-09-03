@@ -32,6 +32,17 @@ package body ESPIDF.WiFi is
 
    procedure esp_wifi_set_config
      (iface : wifi_interface_t;
+      conf  : in out wifi_ap_config_t) is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_set_config (iface, conf));
+   end esp_wifi_set_config;
+
+   -------------------------
+   -- esp_wifi_set_config --
+   -------------------------
+
+   procedure esp_wifi_set_config
+     (iface : wifi_interface_t;
       conf  : in out wifi_sta_config_t) is
    begin
       Ada_ESP_Check_Error (esp_wifi_set_config (iface, conf));

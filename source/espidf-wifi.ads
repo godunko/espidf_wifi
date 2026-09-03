@@ -155,9 +155,16 @@ package ESPIDF.WiFi is
 
    function esp_wifi_set_config
      (iface : wifi_interface_t;
+      conf  : in out wifi_ap_config_t) return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_set_config";
+   function esp_wifi_set_config
+     (iface : wifi_interface_t;
       conf  : in out wifi_sta_config_t) return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_set_config";
 
+   procedure esp_wifi_set_config
+     (iface : wifi_interface_t;
+      conf  : in out wifi_ap_config_t);
    procedure esp_wifi_set_config
      (iface : wifi_interface_t;
       conf  : in out wifi_sta_config_t);
