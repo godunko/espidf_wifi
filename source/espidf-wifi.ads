@@ -70,6 +70,10 @@ package ESPIDF.WiFi is
       To   : ESPIDF.C_Strings.char_array_string)
       with Pre => To'Length in 0 .. 65;
 
+   procedure Set_authmode
+     (Self : in out wifi_ap_config_t;
+      To   : wifi_auth_mode_t);
+
    type wifi_sta_config_t is limited private;
 
    procedure Set_ssid

@@ -97,6 +97,24 @@ package body ESPIDF.WiFi is
    end Set_nvs_enable;
 
    ------------------
+   -- Set_authmode --
+   ------------------
+
+   procedure Set_authmode
+     (Self : in out wifi_ap_config_t;
+      To   : wifi_auth_mode_t)
+   is
+      procedure Imported
+        (cfg  : in out wifi_ap_config_t;
+         mode : wifi_auth_mode_t)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_ap_authmode";
+
+   begin
+      Imported (Self, To);
+   end Set_authmode;
+
+   ------------------
    -- Set_password --
    ------------------
 
