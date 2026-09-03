@@ -33,15 +33,19 @@ package ESPIDF.WiFi is
    procedure Set_nvs_enable
      (cfg : in out wifi_init_config_t; To : Boolean);
 
-   type wifi_config_t is limited private;
+   ------------------------------------------------
+   --  `wifi_config_t` is split into STA/AP/NAN  --
+   ------------------------------------------------
 
-   procedure Set_sta_ssid
-     (Self : in out wifi_config_t;
+   type wifi_sta_config_t is limited private;
+
+   procedure Set_ssid
+     (Self : in out wifi_sta_config_t;
       To   : ESPIDF.C_Strings.char_array_string)
       with Pre => To'Length in 0 .. 33;
 
-   procedure Set_sta_password
-     (Self : in out wifi_config_t;
+   procedure Set_password
+     (Self : in out wifi_sta_config_t;
       To   : ESPIDF.C_Strings.char_array_string)
       with Pre => To'Length in 0 .. 65;
 
@@ -114,12 +118,12 @@ package ESPIDF.WiFi is
 
    function esp_wifi_set_config
      (iface : wifi_interface_t;
-      conf  : in out wifi_config_t) return esp_err_t
+      conf  : in out wifi_sta_config_t) return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_set_config";
 
    procedure esp_wifi_set_config
      (iface : wifi_interface_t;
-      conf  : in out wifi_config_t);
+      conf  : in out wifi_sta_config_t);
 
    function esp_wifi_start return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_start";
@@ -156,7 +160,7 @@ private
       with Import, Convention => C,
            Link_Name => "__ada_sizeof_wifi_config_t";
 
-   type wifi_config_t is
+   type wifi_sta_config_t is
      new System.Storage_Elements.Storage_Array
        (1 .. System.Storage_Elements.Storage_Count (sizeof_wifi_config_t))
        with Convention => C, Default_Component_Value => 0;
