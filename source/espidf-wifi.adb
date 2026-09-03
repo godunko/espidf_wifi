@@ -123,4 +123,22 @@ package body ESPIDF.WiFi is
       Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
    end Set_ssid;
 
+   ----------------------------
+   -- Set_threshold_authmode --
+   ----------------------------
+
+   procedure Set_threshold_authmode
+     (Self : in out wifi_sta_config_t;
+      To   : wifi_auth_mode_t)
+   is
+      procedure Imported
+        (cfg  : in out wifi_sta_config_t;
+         mode : wifi_auth_mode_t)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_sta_threshold_authmode";
+
+   begin
+      Imported (Self, To);
+   end Set_threshold_authmode;
+
 end ESPIDF.WiFi;

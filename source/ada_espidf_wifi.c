@@ -27,7 +27,12 @@ void __ada_Set_wifi_config_t_sta_ssid(wifi_config_t *cfg, const char *ssid, int 
     memcpy(cfg->sta.ssid, ssid, sizeof(cfg->sta.ssid) < len ? sizeof(cfg->sta.ssid) : len);
 }
 
-void __ada_Set_wifi_init_config_t_nvs_enable(wifi_init_config_t *cfg, bool To)
+void __ada_Set_wifi_config_t_sta_threshold_authmode(wifi_config_t *cfg, wifi_auth_mode_t to)
 {
-    cfg->nvs_enable = To;
+    cfg->sta.threshold.authmode = to;
+}
+
+void __ada_Set_wifi_init_config_t_nvs_enable(wifi_init_config_t *cfg, bool to)
+{
+    cfg->nvs_enable = to;
 }

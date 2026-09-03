@@ -33,6 +33,27 @@ package ESPIDF.WiFi is
    procedure Set_nvs_enable
      (cfg : in out wifi_init_config_t; To : Boolean);
 
+   type wifi_auth_mode_t is
+     (WIFI_AUTH_OPEN,
+      WIFI_AUTH_WEP,
+      WIFI_AUTH_WPA_PSK,
+      WIFI_AUTH_WPA2_PSK,
+      WIFI_AUTH_WPA_WPA2_PSK,
+      WIFI_AUTH_ENTERPRISE,
+      WIFI_AUTH_WPA3_PSK,
+      WIFI_AUTH_WPA2_WPA3_PSK,
+      WIFI_AUTH_WAPI_PSK,
+      WIFI_AUTH_OWE,
+      WIFI_AUTH_WPA3_ENT_192,
+      WIFI_AUTH_DUMMY_1,
+      WIFI_AUTH_DUMMY_2,
+      WIFI_AUTH_DPP,
+      WIFI_AUTH_WPA3_ENTERPRISE,
+      WIFI_AUTH_WPA2_WPA3_ENTERPRISE,
+      WIFI_AUTH_WPA_ENTERPRISE) with Convention => C;
+   function WIFI_AUTH_WPA2_ENTERPRISE return wifi_auth_mode_t is
+     (WIFI_AUTH_ENTERPRISE);
+
    ------------------------------------------------
    --  `wifi_config_t` is split into STA/AP/NAN  --
    ------------------------------------------------
@@ -48,6 +69,10 @@ package ESPIDF.WiFi is
      (Self : in out wifi_sta_config_t;
       To   : ESPIDF.C_Strings.char_array_string)
       with Pre => To'Length in 0 .. 65;
+
+   procedure Set_threshold_authmode
+     (Self : in out wifi_sta_config_t;
+      To   : wifi_auth_mode_t);
 
    WIFI_EVENT : constant ESPIDF.Event.esp_event_base_t
      with Import, Convention => C, External_Name => "WIFI_EVENT";
