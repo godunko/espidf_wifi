@@ -58,6 +58,18 @@ package ESPIDF.WiFi is
    --  `wifi_config_t` is split into STA/AP/NAN  --
    ------------------------------------------------
 
+   type wifi_ap_config_t is limited private;
+
+   procedure Set_ssid
+     (Self : in out wifi_ap_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+      with Pre => To'Length in 0 .. 33;
+
+   procedure Set_password
+     (Self : in out wifi_ap_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+      with Pre => To'Length in 0 .. 65;
+
    type wifi_sta_config_t is limited private;
 
    procedure Set_ssid
@@ -184,6 +196,11 @@ private
    sizeof_wifi_config_t : constant int
       with Import, Convention => C,
            Link_Name => "__ada_sizeof_wifi_config_t";
+
+   type wifi_ap_config_t is
+     new System.Storage_Elements.Storage_Array
+       (1 .. System.Storage_Elements.Storage_Count (sizeof_wifi_config_t))
+       with Convention => C, Default_Component_Value => 0;
 
    type wifi_sta_config_t is
      new System.Storage_Elements.Storage_Array

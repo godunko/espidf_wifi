@@ -90,6 +90,25 @@ package body ESPIDF.WiFi is
    ------------------
 
    procedure Set_password
+     (Self : in out wifi_ap_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+   is
+      procedure Imported
+        (cfg  : in out wifi_ap_config_t;
+         pwd  : not null ESPIDF.C_Strings.const_char_ptr;
+         len  : Integer)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_ap_password";
+
+   begin
+      Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
+   end Set_password;
+
+   ------------------
+   -- Set_password --
+   ------------------
+
+   procedure Set_password
      (Self : in out wifi_sta_config_t;
       To   : ESPIDF.C_Strings.char_array_string)
    is
@@ -103,6 +122,25 @@ package body ESPIDF.WiFi is
    begin
       Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
    end Set_password;
+
+   --------------
+   -- Set_ssid --
+   --------------
+
+   procedure Set_ssid
+     (Self : in out wifi_ap_config_t;
+      To   : ESPIDF.C_Strings.char_array_string)
+   is
+      procedure Imported
+        (cfg  : in out wifi_ap_config_t;
+         ssid : not null ESPIDF.C_Strings.const_char_ptr;
+         len  : Integer)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_ap_ssid";
+
+   begin
+      Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
+   end Set_ssid;
 
    --------------
    -- Set_ssid --

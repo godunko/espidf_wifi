@@ -15,6 +15,19 @@ void __ada_WIFI_INIT_CONFIG_DEFAULT(wifi_init_config_t *cfg)
     *cfg = (wifi_init_config_t)WIFI_INIT_CONFIG_DEFAULT();
 }
 
+void __ada_Set_wifi_config_t_ap_ssid(wifi_config_t *cfg, const char *ssid, int len)
+{
+    memset(cfg->ap.ssid, 0, sizeof(cfg->ap.ssid));
+    memcpy(cfg->ap.ssid, ssid, sizeof(cfg->ap.ssid) < len ? sizeof(cfg->ap.ssid) : len);
+    cfg->ap.ssid_len = sizeof(cfg->ap.ssid) < len ? sizeof(cfg->ap.ssid) : len;
+}
+
+void __ada_Set_wifi_config_t_ap_password(wifi_config_t *cfg, const char *pwd, int len)
+{
+    memset(cfg->ap.password, 0, sizeof(cfg->ap.password));
+    memcpy(cfg->ap.password, pwd, sizeof(cfg->ap.password) < len ? sizeof(cfg->ap.password) : len);
+}
+
 void __ada_Set_wifi_config_t_sta_password(wifi_config_t *cfg, const char *pwd, int len)
 {
     memset(cfg->sta.password, 0, sizeof(cfg->sta.password));
