@@ -152,6 +152,24 @@ package body ESPIDF.WiFi is
       Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
    end Set_password;
 
+   ------------------------
+   -- Set_max_connection --
+   ------------------------
+
+   procedure Set_max_connection
+     (Self : in out wifi_ap_config_t;
+      To   : uint8_t)
+   is
+      procedure Imported
+        (cfg  : in out wifi_ap_config_t;
+         max  : ESPIDF.uint8_t)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_ap_max_connection";
+
+   begin
+      Imported (Self, To);
+   end Set_max_connection;
+
    --------------
    -- Set_ssid --
    --------------

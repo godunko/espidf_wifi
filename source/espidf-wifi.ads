@@ -74,6 +74,10 @@ package ESPIDF.WiFi is
      (Self : in out wifi_ap_config_t;
       To   : wifi_auth_mode_t);
 
+   procedure Set_max_connection
+     (Self : in out wifi_ap_config_t;
+      To   : uint8_t);
+
    type wifi_sta_config_t is limited private;
 
    procedure Set_ssid

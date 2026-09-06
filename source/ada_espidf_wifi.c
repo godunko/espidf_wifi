@@ -20,6 +20,11 @@ void __ada_Set_wifi_config_t_ap_authmode(wifi_config_t *cfg, wifi_auth_mode_t to
     cfg->ap.authmode = to;
 }
 
+void __ada_Set_wifi_config_t_ap_max_connection(wifi_config_t *cfg, uint8_t max)
+{
+    cfg->ap.max_connection = max;
+}
+
 void __ada_Set_wifi_config_t_ap_ssid(wifi_config_t *cfg, const char *ssid, int len)
 {
     memset(cfg->ap.ssid, 0, sizeof(cfg->ap.ssid));
