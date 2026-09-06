@@ -78,6 +78,10 @@ package ESPIDF.WiFi is
      (Self : in out wifi_ap_config_t;
       To   : uint8_t);
 
+   procedure Set_pmf_cfg_required
+     (Self : in out wifi_ap_config_t;
+      To   : Boolean);
+
    type wifi_sta_config_t is limited private;
 
    procedure Set_ssid

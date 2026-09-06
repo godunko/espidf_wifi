@@ -31,6 +31,11 @@ void __ada_Set_wifi_config_t_ap_password(wifi_config_t *cfg, const char *pwd, in
     memcpy(cfg->ap.password, pwd, sizeof(cfg->ap.password) < len ? sizeof(cfg->ap.password) : len);
 }
 
+void __ada_Set_wifi_config_t_ap_pmf_cfg_required(wifi_config_t *cfg, bool req)
+{
+    cfg->ap.pmf_cfg.required = req;
+}
+
 void __ada_Set_wifi_config_t_ap_ssid(wifi_config_t *cfg, const char *ssid, int len)
 {
     memset(cfg->ap.ssid, 0, sizeof(cfg->ap.ssid));

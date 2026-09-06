@@ -152,6 +152,24 @@ package body ESPIDF.WiFi is
       Imported (Self, ESPIDF.C_Strings.As_const_char_ptr (To), To'Length - 1);
    end Set_password;
 
+   --------------------------
+   -- Set_pmf_cfg_required --
+   --------------------------
+
+   procedure Set_pmf_cfg_required
+     (Self : in out wifi_ap_config_t;
+      To   : Boolean)
+   is
+      procedure Imported
+        (cfg  : in out wifi_ap_config_t;
+         req  : Interfaces.C.C_bool)
+        with Import, Convention => C,
+             External_Name => "__ada_Set_wifi_config_t_ap_pmf_cfg_required";
+
+   begin
+      Imported (Self, Interfaces.C.C_bool (To));
+   end Set_pmf_cfg_required;
+
    ------------------------
    -- Set_max_connection --
    ------------------------
