@@ -15,49 +15,49 @@ void __ada_WIFI_INIT_CONFIG_DEFAULT(wifi_init_config_t *cfg)
     *cfg = (wifi_init_config_t)WIFI_INIT_CONFIG_DEFAULT();
 }
 
-void __ada_Set_wifi_config_t_ap_authmode(wifi_config_t *cfg, wifi_auth_mode_t to)
+void __ada_Set_wifi_config_t_ap_authmode(wifi_ap_config_t *cfg, wifi_auth_mode_t to)
 {
-    cfg->ap.authmode = to;
+    cfg->authmode = to;
 }
 
-void __ada_Set_wifi_config_t_ap_max_connection(wifi_config_t *cfg, uint8_t max)
+void __ada_Set_wifi_config_t_ap_max_connection(wifi_ap_config_t *cfg, uint8_t max)
 {
-    cfg->ap.max_connection = max;
+    cfg->max_connection = max;
 }
 
-void __ada_Set_wifi_config_t_ap_password(wifi_config_t *cfg, const char *pwd, int len)
+void __ada_Set_wifi_config_t_ap_password(wifi_ap_config_t *cfg, const char *pwd, int len)
 {
-    memset(cfg->ap.password, 0, sizeof(cfg->ap.password));
-    memcpy(cfg->ap.password, pwd, sizeof(cfg->ap.password) < len ? sizeof(cfg->ap.password) : len);
+    memset(cfg->password, 0, sizeof(cfg->password));
+    memcpy(cfg->password, pwd, sizeof(cfg->password) < len ? sizeof(cfg->password) : len);
 }
 
-void __ada_Set_wifi_config_t_ap_pmf_cfg_required(wifi_config_t *cfg, bool req)
+void __ada_Set_wifi_config_t_ap_pmf_cfg_required(wifi_ap_config_t *cfg, bool req)
 {
-    cfg->ap.pmf_cfg.required = req;
+    cfg->pmf_cfg.required = req;
 }
 
-void __ada_Set_wifi_config_t_ap_ssid(wifi_config_t *cfg, const char *ssid, int len)
+void __ada_Set_wifi_config_t_ap_ssid(wifi_ap_config_t *cfg, const char *ssid, int len)
 {
-    memset(cfg->ap.ssid, 0, sizeof(cfg->ap.ssid));
-    memcpy(cfg->ap.ssid, ssid, sizeof(cfg->ap.ssid) < len ? sizeof(cfg->ap.ssid) : len);
-    cfg->ap.ssid_len = sizeof(cfg->ap.ssid) < len ? sizeof(cfg->ap.ssid) : len;
+    memset(cfg->ssid, 0, sizeof(cfg->ssid));
+    memcpy(cfg->ssid, ssid, sizeof(cfg->ssid) < len ? sizeof(cfg->ssid) : len);
+    cfg->ssid_len = sizeof(cfg->ssid) < len ? sizeof(cfg->ssid) : len;
 }
 
-void __ada_Set_wifi_config_t_sta_password(wifi_config_t *cfg, const char *pwd, int len)
+void __ada_Set_wifi_config_t_sta_password(wifi_sta_config_t *cfg, const char *pwd, int len)
 {
-    memset(cfg->sta.password, 0, sizeof(cfg->sta.password));
-    memcpy(cfg->sta.password, pwd, sizeof(cfg->sta.password) < len ? sizeof(cfg->sta.password) : len);
+    memset(cfg->password, 0, sizeof(cfg->password));
+    memcpy(cfg->password, pwd, sizeof(cfg->password) < len ? sizeof(cfg->password) : len);
 }
 
-void __ada_Set_wifi_config_t_sta_ssid(wifi_config_t *cfg, const char *ssid, int len)
+void __ada_Set_wifi_config_t_sta_ssid(wifi_sta_config_t *cfg, const char *ssid, int len)
 {
-    memset(cfg->sta.ssid, 0, sizeof(cfg->sta.ssid));
-    memcpy(cfg->sta.ssid, ssid, sizeof(cfg->sta.ssid) < len ? sizeof(cfg->sta.ssid) : len);
+    memset(cfg->ssid, 0, sizeof(cfg->ssid));
+    memcpy(cfg->ssid, ssid, sizeof(cfg->ssid) < len ? sizeof(cfg->ssid) : len);
 }
 
-void __ada_Set_wifi_config_t_sta_threshold_authmode(wifi_config_t *cfg, wifi_auth_mode_t to)
+void __ada_Set_wifi_config_t_sta_threshold_authmode(wifi_sta_config_t *cfg, wifi_auth_mode_t to)
 {
-    cfg->sta.threshold.authmode = to;
+    cfg->threshold.authmode = to;
 }
 
 void __ada_Set_wifi_init_config_t_nvs_enable(wifi_init_config_t *cfg, bool to)
