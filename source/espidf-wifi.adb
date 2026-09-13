@@ -27,6 +27,56 @@ package body ESPIDF.WiFi is
    end esp_wifi_init;
 
    -------------------------
+   -- esp_wifi_get_config --
+   -------------------------
+
+   function esp_wifi_get_config
+     (conf : out wifi_ap_config_t) return esp_err_t
+   is
+      function Internal
+        (iface : wifi_interface_t;
+         conf  : out wifi_ap_config_t) return esp_err_t
+        with Import, Convention => C, External_Name => "esp_wifi_get_config";
+
+   begin
+      return Internal (WIFI_IF_AP, conf);
+   end esp_wifi_get_config;
+
+   -------------------------
+   -- esp_wifi_get_config --
+   -------------------------
+
+   procedure esp_wifi_get_config (conf : out wifi_ap_config_t) is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_get_config (conf));
+   end esp_wifi_get_config;
+
+   -------------------------
+   -- esp_wifi_get_config --
+   -------------------------
+
+   function esp_wifi_get_config
+     (conf : out wifi_sta_config_t) return esp_err_t
+   is
+      function Internal
+        (iface : wifi_interface_t;
+         conf  : out wifi_sta_config_t) return esp_err_t
+        with Import, Convention => C, External_Name => "esp_wifi_get_config";
+
+   begin
+      return Internal (WIFI_IF_STA, conf);
+   end esp_wifi_get_config;
+
+   -------------------------
+   -- esp_wifi_get_config --
+   -------------------------
+
+   procedure esp_wifi_get_config (conf : out wifi_sta_config_t) is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_get_config (conf));
+   end esp_wifi_get_config;
+
+   -------------------------
    -- esp_wifi_set_config --
    -------------------------
 

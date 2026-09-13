@@ -165,6 +165,15 @@ package ESPIDF.WiFi is
 
    procedure esp_wifi_set_mode (mode : wifi_mode_t);
 
+   function esp_wifi_get_config
+     (conf : out wifi_ap_config_t) return esp_err_t;
+   function esp_wifi_get_config
+     (conf : out wifi_sta_config_t) return esp_err_t;
+   --  `iface` parameter is implicit in the specialized functions
+
+   procedure esp_wifi_get_config (conf : out wifi_ap_config_t);
+   procedure esp_wifi_get_config (conf : out wifi_sta_config_t);
+
    function esp_wifi_set_config
      (conf : in out wifi_ap_config_t) return esp_err_t;
    function esp_wifi_set_config
