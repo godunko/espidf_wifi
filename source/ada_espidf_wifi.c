@@ -15,6 +15,12 @@ void __ada_WIFI_INIT_CONFIG_DEFAULT(wifi_init_config_t *cfg)
     *cfg = (wifi_init_config_t)WIFI_INIT_CONFIG_DEFAULT();
 }
 
+void __ada_Get_wifi_sta_config_t_ssid(wifi_sta_config_t *conf, const char **data, size_t *maxlen)
+{
+    *data   = conf->ssid;
+    *maxlen = sizeof(conf->ssid);
+}
+
 void __ada_Set_wifi_config_t_ap_authmode(wifi_ap_config_t *cfg, wifi_auth_mode_t to)
 {
     cfg->authmode = to;

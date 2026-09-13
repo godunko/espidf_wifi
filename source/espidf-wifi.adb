@@ -144,6 +144,29 @@ package body ESPIDF.WiFi is
       Ada_ESP_Check_Error (esp_wifi_start);
    end esp_wifi_start;
 
+   --------------
+   -- Get_ssid --
+   --------------
+
+   function Get_ssid
+     (Self : wifi_sta_config_t) return ESPIDF.C_Strings.char_array_string
+   is
+      procedure Imported
+        (conf   : wifi_sta_config_t;
+         data   : out ESPIDF.C_Strings.const_char_ptr;
+         maxlen : out size_t)
+        with Import, Convention => C,
+             External_Name => "__ada_Get_wifi_sta_config_t_ssid";
+
+      Data   : ESPIDF.C_Strings.const_char_ptr;
+      Maxlen : size_t;
+
+   begin
+      Imported (Self, Data, Maxlen);
+
+      return ESPIDF.C_Strings.To_char_array_string (Data, Maxlen);
+   end Get_ssid;
+
    ----------------
    -- Initialize --
    ----------------

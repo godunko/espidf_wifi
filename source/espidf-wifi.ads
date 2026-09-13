@@ -84,6 +84,9 @@ package ESPIDF.WiFi is
 
    type wifi_sta_config_t is limited private;
 
+   function Get_ssid
+     (Self : wifi_sta_config_t) return ESPIDF.C_Strings.char_array_string;
+
    procedure Set_ssid
      (Self : in out wifi_sta_config_t;
       To   : ESPIDF.C_Strings.char_array_string)
