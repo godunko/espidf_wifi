@@ -135,6 +135,15 @@ package body ESPIDF.WiFi is
       Ada_ESP_Check_Error (esp_wifi_set_mode (mode));
    end esp_wifi_set_mode;
 
+   --------------------------
+   -- esp_wifi_set_storage --
+   --------------------------
+
+   procedure esp_wifi_set_storage (storage : wifi_storage_t) is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_set_storage (storage));
+   end esp_wifi_set_storage;
+
    --------------------
    -- esp_wifi_start --
    --------------------

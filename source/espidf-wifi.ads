@@ -54,6 +54,10 @@ package ESPIDF.WiFi is
    function WIFI_AUTH_WPA2_ENTERPRISE return wifi_auth_mode_t is
      (WIFI_AUTH_ENTERPRISE);
 
+   type wifi_storage_t is
+     (WIFI_STORAGE_FLASH,
+      WIFI_STORAGE_RAM) with Convention => C;
+
    ------------------------------------------------
    --  `wifi_config_t` is split into STA/AP/NAN  --
    ------------------------------------------------
@@ -186,6 +190,11 @@ package ESPIDF.WiFi is
    procedure esp_wifi_set_config (conf : in out wifi_ap_config_t);
    procedure esp_wifi_set_config (conf : in out wifi_sta_config_t);
    --  `iface` parameter is implicit in the specialized procedures
+
+   function esp_wifi_set_storage (storage : wifi_storage_t) return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_set_storage";
+
+   procedure esp_wifi_set_storage (storage : wifi_storage_t);
 
    function esp_wifi_start return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_start";
