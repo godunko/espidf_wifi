@@ -17,6 +17,15 @@ package body ESPIDF.WiFi is
       Ada_ESP_Check_Error (esp_wifi_connect);
    end esp_wifi_connect;
 
+   -------------------------
+   -- esp_wifi_disconnect --
+   -------------------------
+
+   procedure esp_wifi_disconnect is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_disconnect);
+   end esp_wifi_disconnect;
+
    -------------------
    -- esp_wifi_init --
    -------------------
