@@ -15,6 +15,33 @@ with ESPIDF.Event;
 
 package ESPIDF.WiFi is
 
+   ESP_ERR_WIFI_NOT_INIT          : constant esp_err_t := 16#3001#;
+   ESP_ERR_WIFI_NOT_STARTED       : constant esp_err_t := 16#3002#;
+   ESP_ERR_WIFI_NOT_STOPPED       : constant esp_err_t := 16#3003#;
+   ESP_ERR_WIFI_IF                : constant esp_err_t := 16#3004#;
+   ESP_ERR_WIFI_MODE              : constant esp_err_t := 16#3005#;
+   ESP_ERR_WIFI_STATE             : constant esp_err_t := 16#3006#;
+   ESP_ERR_WIFI_CONN              : constant esp_err_t := 16#3007#;
+   ESP_ERR_WIFI_NVS               : constant esp_err_t := 16#3008#;
+   ESP_ERR_WIFI_MAC               : constant esp_err_t := 16#3009#;
+   ESP_ERR_WIFI_SSID              : constant esp_err_t := 16#300A#;
+   ESP_ERR_WIFI_PASSWORD          : constant esp_err_t := 16#300B#;
+   ESP_ERR_WIFI_TIMEOUT           : constant esp_err_t := 16#300C#;
+   ESP_ERR_WIFI_WAKE_FAIL         : constant esp_err_t := 16#300D#;
+   ESP_ERR_WIFI_WOULD_BLOCK       : constant esp_err_t := 16#300E#;
+   ESP_ERR_WIFI_NOT_CONNECT       : constant esp_err_t := 16#300F#;
+   ESP_ERR_WIFI_POST              : constant esp_err_t := 16#3012#;
+   ESP_ERR_WIFI_INIT_STATE        : constant esp_err_t := 16#3013#;
+   ESP_ERR_WIFI_STOP_STATE        : constant esp_err_t := 16#3014#;
+   ESP_ERR_WIFI_NOT_ASSOC         : constant esp_err_t := 16#3015#;
+   ESP_ERR_WIFI_TX_DISALLOW       : constant esp_err_t := 16#3016#;
+   ESP_ERR_WIFI_TWT_FULL          : constant esp_err_t := 16#3017#;
+   ESP_ERR_WIFI_TWT_SETUP_TIMEOUT : constant esp_err_t := 16#3018#;
+   ESP_ERR_WIFI_TWT_SETUP_TXFAIL  : constant esp_err_t := 16#3019#;
+   ESP_ERR_WIFI_TWT_SETUP_REJECT  : constant esp_err_t := 16#301A#;
+   ESP_ERR_WIFI_DISCARD           : constant esp_err_t := 16#301B#;
+   ESP_ERR_WIFI_ROC_IN_PROGRESS   : constant esp_err_t := 16#301C#;
+
    type wifi_mode_t is
      (WIFI_MODE_NULL,
       WIFI_MODE_STA,
