@@ -85,6 +85,15 @@ package body ESPIDF.WiFi is
       Ada_ESP_Check_Error (esp_wifi_get_config (conf));
    end esp_wifi_get_config;
 
+   ----------------------
+   -- esp_wifi_restore --
+   ----------------------
+
+   procedure esp_wifi_restore is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_restore);
+   end esp_wifi_restore;
+
    -------------------------
    -- esp_wifi_set_config --
    -------------------------

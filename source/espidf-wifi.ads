@@ -196,6 +196,11 @@ package ESPIDF.WiFi is
 
    procedure esp_wifi_set_storage (storage : wifi_storage_t);
 
+   function esp_wifi_restore return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_restore";
+
+   procedure esp_wifi_restore;
+
    function esp_wifi_start return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_start";
 
