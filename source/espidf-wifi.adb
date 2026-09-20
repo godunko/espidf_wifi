@@ -171,6 +171,15 @@ package body ESPIDF.WiFi is
       Ada_ESP_Check_Error (esp_wifi_start);
    end esp_wifi_start;
 
+   --------------------
+   -- esp_wifi_stop --
+   --------------------
+
+   procedure esp_wifi_stop is
+   begin
+      Ada_ESP_Check_Error (esp_wifi_stop);
+   end esp_wifi_stop;
+
    --------------
    -- Get_ssid --
    --------------

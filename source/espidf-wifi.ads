@@ -233,6 +233,11 @@ package ESPIDF.WiFi is
 
    procedure esp_wifi_start;
 
+   function esp_wifi_stop return esp_err_t
+     with Import, Convention => C, External_Name => "esp_wifi_stop";
+
+   procedure esp_wifi_stop;
+
    function esp_wifi_connect return esp_err_t
      with Import, Convention => C, External_Name => "esp_wifi_connect";
 
