@@ -18,4 +18,7 @@ package ESPIDF.WiFi.Default is
        with Import, Convention => C,
             External_Name => "esp_netif_create_default_wifi_sta";
 
+   procedure esp_netif_destroy_default_wifi
+     (esp_netif : in out ESPIDF.NETIF.esp_netif_t_ptr);
+
 end ESPIDF.WiFi.Default;
