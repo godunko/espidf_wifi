@@ -1,9 +1,15 @@
 name = "espidf_wifi"
 version = "0.1.0-dev"
 website = "https://github.com/godunko/espidf_wifi"
-description = "Ada/ESP-IDF: bindings WiFi"
+description = "Ada/ESP-IDF: Wi-Fi driver bindings"
 long-description = """
-Ada bindings for the ESP-IDF Wi-Fi driver, providing high-level interface management and station/AP mode configuration for Espressif microcontrollers.
+Ada bindings for the ESP-IDF Wi-Fi driver (`esp_wifi`).
+
+Covers:
+- driver initialization, start/stop, connect/disconnect;
+- mode selection (station, access point) and configuration storage;
+- station and access point configuration (SSID, password, authentication mode, PMF);
+- creation of default network interfaces for station and access point.
 """
 
 authors = ["Vadim Godunko"]
