@@ -1,5 +1,5 @@
 name = "espidf_wifi"
-version = "0.1.0-dev"
+version = "0.1.0"
 website = "https://github.com/godunko/espidf_wifi"
 description = "Ada/ESP-IDF: Wi-Fi driver bindings"
 long-description = """
