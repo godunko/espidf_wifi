@@ -24,4 +24,4 @@ generate_c = false
 generate_gpr = true
 
 [[depends-on]]
-espidf_netif = "*"
+espidf_netif = "^0.1.0"
