@@ -24,6 +24,4 @@ generate_c = false
 generate_gpr = true
 
 [[depends-on]]
-espidf = "*"
-espidf_event = "*"
 espidf_netif = "*"
